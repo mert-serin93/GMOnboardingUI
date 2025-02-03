@@ -34,6 +34,7 @@ Current outputs for the eventPassthrough are:
 You can use these events to send analytics or show paywall.
 
 #3. Configuration
+*This will be updated*
 
 WIP: Currently we need to pass the fonts that we want to show during the onboarding. To do that OnboardingConfiguration needs to be passed during configuring OnboardingUIManager.
 
@@ -43,7 +44,7 @@ OnboardingConfiguration(
                                         secondaryFont: .generalSansVariableBoldMedium(14),
                                         ctaFont: .generalSansVariableBoldSemibold(14))
 ```
-## This will be updated
+
 
 
 
