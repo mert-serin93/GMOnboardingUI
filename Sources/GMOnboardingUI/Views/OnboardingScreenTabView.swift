@@ -36,10 +36,13 @@ final public class OnboardingScreenTabViewModel: ObservableObject {
                     "screen_id": "\(screens[currentState].id)"])
             }
 
+            OnboardingUIManager.shared.eventPassthrough.send(.onboardingScreenViewed(index: currentState))
+
             withAnimation(.easeInOut(duration: 0.5)) {
                 currentState += 1
                 self.items = screens[currentState].items.filter({$0.type != .backgroundView})
                 self.backgroundItems = screens[currentState].items.filter({$0.type == .backgroundView})
+                OnboardingUIManager.shared.eventPassthrough.send(.onboardingScreenActive(index: currentState))
             }
             
         } else {

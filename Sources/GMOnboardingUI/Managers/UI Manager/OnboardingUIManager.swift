@@ -80,6 +80,8 @@ extension OnboardingUIManager {
         case appInitializedFailed(Error)
 
         case onboardingStarted
+        case onboardingScreenViewed(index: Int)
+        case onboardingScreenActive(index: Int)
         case onboardingCompleted
     }
 }
