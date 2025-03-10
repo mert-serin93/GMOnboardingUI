@@ -26,10 +26,11 @@ public struct OnboardingConfiguration {
     }
 
     func getFont(from style: FontStyle, size: CGFloat) -> Font {
+        print("font name: ", primaryFont.fontName)
         switch style {
-        case .primary: return .custom(primaryFont.fontName, size: size)
-        case .secondary: return .custom(secondaryFont.fontName, size: size)
-        case .cta:return .custom(ctaFont.fontName, size: size)
+        case .primary: return Font(primaryFont as CTFont)
+        case .secondary: return Font(secondaryFont as CTFont)
+        case .cta:return Font(ctaFont as CTFont)
         }
     }
 }

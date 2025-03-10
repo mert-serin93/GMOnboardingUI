@@ -29,6 +29,7 @@ final public class OnboardingScreenTabViewModel: ObservableObject {
 
     func onCtaAction() {
         guard let response = authManager.getOnboarding() else { return }
+        UIImpactFeedbackGenerator(style: .medium).impactOccurred()
         if currentState < screens.count - 1 {
             Task {
                 try await OnboardingUIManager.shared.sendEvent(event: .onboardingScreenViewed, parameters: [
@@ -64,8 +65,8 @@ public struct OnboardingScreenTabView: View {
         OnboardingPreviewView(backgroundElements: viewModel.backgroundItems, elements: viewModel.items, onCtaAction: viewModel.onCtaAction)
             .transition(
                 .asymmetric(
-                    insertion: .move(edge: .trailing).combined(with: .opacity),
-                    removal: .move(edge: .leading).combined(with: .opacity)
+                    insertion: .opacity,
+                    removal: .opacity
                 )
             )
             .animation(
