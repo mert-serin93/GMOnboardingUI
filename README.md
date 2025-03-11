@@ -28,6 +28,8 @@ Current outputs for the eventPassthrough are:
         case appInitialized
         case appInitializedFailed(Error)
         case onboardingStarted
+        case onboardingScreenViewed(index: Int)
+        case onboardingScreenActive(index: Int)
         case onboardingCompleted
 ```
 
