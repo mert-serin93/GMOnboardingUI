@@ -8,18 +8,18 @@
 import Foundation
 import SwiftUI
 
-struct OnboardingScreenItem: Codable, Identifiable {
+public struct OnboardingScreenItem: Codable, Identifiable {
 
-    enum ItemType: String, Codable {
+    public enum ItemType: String, Codable {
         case spacer, text, image, button, video, backgroundView, progress, gradient
 
     }
 
-    let id: String
-    let name: String
-    var type: ItemType
-    let itemJSON: String?
-    var item: (any GMOnboardingItem)?
+    public let id: String
+    public let name: String
+    public var type: ItemType
+    public let itemJSON: String?
+    public var item: (any GMOnboardingItem)?
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -28,7 +28,7 @@ struct OnboardingScreenItem: Codable, Identifiable {
         case itemJSON
     }
 
-    init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
         id = try container.decode(String.self, forKey: .id)
@@ -51,7 +51,7 @@ struct OnboardingScreenItem: Codable, Identifiable {
         }
     }
 
-    func encode(to encoder: Encoder) throws {
+    public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
 
         try container.encode(id, forKey: .id)
@@ -134,7 +134,7 @@ enum TextAlignment: String, Codable {
     }
 }
 
-protocol GMOnboardingItem: Identifiable, Codable {
+public protocol GMOnboardingItem: Identifiable, Codable {
     var id: String { get set }
     var backgroundColor: String { get set }
     func copy() -> Self

@@ -6,9 +6,9 @@ struct InitializeAppResponseModel: Codable {
 }
 
 public struct Onboarding: Codable {
-    let id: Int
-    let screens: [ScreenItem]
-    let onboardingID: Int
+    public let id: Int
+    public let screens: [ScreenItem]
+    public let onboardingID: Int
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
@@ -17,10 +17,10 @@ public struct Onboarding: Codable {
     }
 }
 
-struct ScreenItem: Codable {
-    let id: Int
-    let title: String
-    let items: [OnboardingScreenItem]
+public struct ScreenItem: Codable {
+    public let id: Int
+    public let title: String
+    public let items: [OnboardingScreenItem]
 }
 
 struct Session: Codable {
