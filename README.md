@@ -25,7 +25,7 @@ Splash Screen needs to be provided to OnboardingUI, this will make app shows som
 Current outputs for the eventPassthrough are:
 
 ```
-        case appInitialized
+        case appInitialized(onboarding: Onboarding)
         case appInitializedFailed(Error)
         case onboardingStarted
         case onboardingScreenViewed(index: Int)
