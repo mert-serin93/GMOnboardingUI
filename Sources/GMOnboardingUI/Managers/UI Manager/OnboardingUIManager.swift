@@ -20,7 +20,7 @@ final public class OnboardingUIManager: ObservableObject {
         Task {
             if let response = authManager.getOnboarding() {
                 await MainActor.run {
-                    eventPassthrough.send(.appInitialized)
+                    eventPassthrough.send(.appInitialized(onboarding: response.onboarding))
                 }
                 return
             }
@@ -29,7 +29,7 @@ final public class OnboardingUIManager: ObservableObject {
                 authManager.save(with: response)
                 authManager.setHasStartedOnboarding(with: true)
                 await MainActor.run {
-                    eventPassthrough.send(.appInitialized)
+                    eventPassthrough.send(.appInitialized(onboarding: response.onboarding))
                 }
             } catch {
                 await MainActor.run {
@@ -76,7 +76,7 @@ enum OnboardingAnalyticsEvent: String {
 
 extension OnboardingUIManager {
     public enum Events {
-        case appInitialized
+        case appInitialized(onboarding: Onboarding)
         case appInitializedFailed(Error)
 
         case onboardingStarted
