@@ -5,7 +5,7 @@ struct InitializeAppResponseModel: Codable {
     let session: Session
 }
 
-struct Onboarding: Codable {
+public struct Onboarding: Codable {
     let id: Int
     let screens: [ScreenItem]
     let onboardingID: Int
